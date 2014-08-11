@@ -33,10 +33,28 @@ email:dmarcus@pdx.edu
 
 ------------------------------------------------------------------------------------------------------------------------
 
-Name:
+NAME:
 =====
 
 Divya Anna Marcus
 
-========================================================================================================================
+------------------------------------------------------------------------------------------------------------------------
+
+PROJECT NAME:
+=============
+
+CastOffline
+
+------------------------------------------------------------------------------------------------------------------------
+
+PROJECT DESCRIPTION:
+===================
+
+CastOffline uses GoogleCast, a technology that lets user to send and control media to a large display. CastOffline uses android phone as a sender device. It is used to send the local phone media like audios,videos and images in the phone to a display like television. The app maintains an audio,video and image list from the phone memory. The user can choose the media that he wishes to see on the big screen.To serve the local content,the device must include a http server. CastOffline uses NanoHttpd server.  Link:https://github.com/NanoHttpd/nanohttpd/tree/nanohttpd-for-java1.1
+
+Sender: Android App
+
+Reciever: Custom Reciever developed using HTML5,CSS and Javascript
+
+-----------------------------------------------------------------------------------------------------------------------
 
