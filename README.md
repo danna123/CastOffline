@@ -119,7 +119,7 @@ Future Enhancements
 ===================
 1. Currently in video/audio playback, only play/pause is working. As future enhancement, the playback should be able to seek to a postion.
 2. Include audio,video looping and image slideshow
-3. Make the app completely in accordance with the  design checklist provided by google.
+3. Extend CastOffline completely in accordance with the design checklist provided by google.
 
 
 -----------------------------------------------------------------------------------------------------------------------
