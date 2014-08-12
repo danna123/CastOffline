@@ -12,6 +12,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
+/*References: http://developer.android.com/guide/topics/ui/layout/gridview.html
+ * http://stackoverflow.com/questions/18590514/loading-all-the-images-from-gallery-into-the-application-in-android
+ * http://stackoverflow.com/questions/18590514/loading-all-the-images-from-gallery-into-the-application-in-android  */
+
 package com.castoffline.mediaactivity;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +24,7 @@ import java.util.Date;
 
 import com.castoffline.castActivity.CastMedia;
 import com.castoffline.R;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -32,7 +37,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +45,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class ImageGrid extends Fragment{
 	int imageID;
@@ -65,17 +68,17 @@ public class ImageGrid extends Fragment{
          gridview1.setStretchMode(GridView.STRETCH_COLUMN_WIDTH); 
 		 imageList= new ArrayList<Image>();
 		 getImageList();
-		 Log.d("here","image");
 		 ImageAdapter imageAdt = new ImageAdapter(getActivity(), imageList);
 		 gridview1.setAdapter(imageAdt);
 		 gridview1.setOnItemClickListener(new OnItemClickListener() {
-	    	 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+	    	 @SuppressLint("SimpleDateFormat")
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 	        	Image currImage1=imageList.get(position);
 	        	long longdate=currImage1.getDate();
 				Date d = new Date(longdate); 
 				java.text.DateFormat formatter = new SimpleDateFormat("MMMM dd, yyyy h:mmaa"); 
+				@SuppressWarnings("unused")
 				String dateString = formatter.format(d); 
-	            Toast.makeText(getActivity(), " " + position+" "+currImage1.getPath()+"Date:"+dateString, Toast.LENGTH_LONG).show();
 	            myintent2 = new Intent(getActivity(),CastMedia.class);
 				myintent2.setType(imageList.get(position).getMediatype());
 				myintent2.setFlags(position);
@@ -96,12 +99,14 @@ public class ImageGrid extends Fragment{
 			 int idColumn = imageCursor.getColumnIndex(android.provider.MediaStore.Images.Media._ID);
 			 int dateColumn = imageCursor.getColumnIndex (android.provider.MediaStore.Images.Media.DATE_TAKEN);
 			 int pathColumn = imageCursor.getColumnIndex (android.provider.MediaStore.Images.Media.DATA);
+			 int mimetype= imageCursor.getColumnIndex (android.provider.MediaStore.Images.Media.MIME_TYPE);
 			 do {
 					 long thisId =imageCursor.getLong(idColumn);
 					 String thisTitle = imageCursor.getString(titleColumn);
 					 long thisdate = imageCursor.getLong(dateColumn);
 					 String thisPath = imageCursor.getString(pathColumn);
-					 imageList.add(new Image(thisId, thisTitle, thisdate,thisPath));
+					 String thismimetype=imageCursor.getString(mimetype);
+					 imageList.add(new Image(thisId, thisTitle, thisdate,thisPath,thismimetype));
 				} while (imageCursor.moveToNext());
 		}
 	}
@@ -111,12 +116,14 @@ public class ImageGrid extends Fragment{
 		public String title;
 		public long date;
 		public String path;
-		public Image(long imageID, String imageTitle, long imageDate,String imagePath) {
+		public String imgmimetype;
+		public Image(long imageID, String imageTitle, long imageDate,String imagePath,String mimetype) {
 			id=imageID;
-			mediatype="image";
+			mediatype="photo";
 			title=imageTitle;
 			date=imageDate;
 			path=imagePath;
+			imgmimetype=mimetype;
 		}
 		public Image(Parcel source) {
 			 this.id = source.readLong();
@@ -124,12 +131,14 @@ public class ImageGrid extends Fragment{
 			 this.title = source.readString();
 			 this.date = source.readLong();
 			 this.path=source.readString();
+			 this.imgmimetype=source.readString();
 		}
 		public long getID(){return id;}
 		public String getMediatype(){return mediatype;}
 		public String getTitle(){return title;}
 		public long getDate(){return date;}
 		public String getPath(){return path;}
+		public String getmimetype(){return imgmimetype;}
 		@Override
 		public int describeContents() {
 			// TODO Auto-generated method stub
@@ -142,6 +151,7 @@ public class ImageGrid extends Fragment{
 			dest.writeString(title);
 			dest.writeLong(date);
 			dest.writeString(path);
+			dest.writeString(imgmimetype);
 			
 		}
 		public static final Parcelable.Creator<Image> CREATOR = new Parcelable.Creator<Image>()  {

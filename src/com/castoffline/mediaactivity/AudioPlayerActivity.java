@@ -13,23 +13,35 @@ See the License for the specific language governing permissions and
 limitations under the License.*/
 
 
+
+/*Reference : Adapter Class :  http://developer.android.com/reference/android/widget/Adapter.html
+ * 			  Parcelable : http://developer.android.com/reference/android/os/Parcelable.html
+ * 			  Audio Icon : https://www.iconfinder.com/iconsets/miniiconset */
+
 package com.castoffline.mediaactivity;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import com.castoffline.castActivity.CastMedia;
 import com.castoffline.R;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -52,6 +64,7 @@ public class AudioPlayerActivity  extends Fragment
 	int mediatype;
 	MediaPlayer player;
 	Uri playableUri;
+	Bitmap bitmap;
 	Intent myIntent1=null;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -83,23 +96,23 @@ public class AudioPlayerActivity  extends Fragment
 	
     public void getSongList() {
 		ContentResolver musicResolver = getActivity().getContentResolver();
-		Uri musicUri = android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+		Uri musicUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 		Cursor musicCursor = musicResolver.query(musicUri, null, null, null, null);
 		if(musicCursor!=null && musicCursor.moveToFirst()){
 			 //get columns
-			 int titleColumn = musicCursor.getColumnIndex(android.provider.MediaStore.Audio.Media.TITLE);
-			 int idColumn = musicCursor.getColumnIndex(android.provider.MediaStore.Audio.Media._ID);
-			 int artistColumn = musicCursor.getColumnIndex (android.provider.MediaStore.Audio.Media.ARTIST);
-			 int pathColumn = musicCursor.getColumnIndex (android.provider.MediaStore.Audio.Media.DATA);
-			 int albumArt= musicCursor.getColumnIndex (android.provider.MediaStore.Audio.AlbumColumns.ALBUM_ART);
+			 int titleColumn = musicCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
+			 int idColumn = musicCursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID);
+			 int artistColumn = musicCursor.getColumnIndex (MediaStore.Audio.Media.ARTIST);
+			 int pathColumn = musicCursor.getColumnIndex (MediaStore.Audio.Media.DATA);
+			 int mimetype= musicCursor.getColumnIndex (MediaStore.Audio.Media.MIME_TYPE);
 			 //add songs to list
 			 do {
 					 long thisId = musicCursor.getLong(idColumn);
 					 String thisTitle = musicCursor.getString(titleColumn);
 					 String thisArtist = musicCursor.getString(artistColumn);
 					 String thisPath = musicCursor.getString(pathColumn);
-					 String thisAlbumArt=musicCursor.getString(pathColumn);
-					 songList.add(new Song(thisId, thisTitle, thisArtist,thisPath,thisAlbumArt));
+					 String thismimetype=musicCursor.getString(mimetype);
+					 songList.add(new Song(thisId, thisTitle, thisArtist,thisPath,thismimetype));
 				} while (musicCursor.moveToNext());
 		}
 	}
@@ -112,13 +125,15 @@ public class AudioPlayerActivity  extends Fragment
 		private String title;
 		private String artist;
 		private String path;
-		public Song(long songID, String songTitle, String songArtist,String songPath,String albumArt) {
+		private String mediamimetype;
+		public Song(long songID, String songTitle, String songArtist,String songPath,String mimetype) {
 			id=songID;
 			mediatype="audio";
 			title=songTitle;
 			artist=songArtist;
 			path=songPath;
-			albumart=albumArt;
+			albumart=null;
+			mediamimetype=mimetype;
 		}
 		public Song(Parcel source) {
 			 this.id = source.readLong();
@@ -127,6 +142,7 @@ public class AudioPlayerActivity  extends Fragment
 			 this.artist = source.readString();
 			 this.path=source.readString();
 			 this.albumart=source.readString();
+			 this.mediamimetype=source.readString();
 		 }
 		public long getID(){return id;}
 		public String getMediatype(){return mediatype;}
@@ -134,6 +150,7 @@ public class AudioPlayerActivity  extends Fragment
 		public String getArtist(){return artist;}
 		public String getPath(){return path;}
 		public String getAlbumArt(){return albumart;}
+		public String getMimeType(){return mediamimetype;}
 		@Override
 		public int describeContents() {
 			// TODO Auto-generated method stub
@@ -147,6 +164,7 @@ public class AudioPlayerActivity  extends Fragment
 			dest.writeString(artist);
 			dest.writeString(path);
 			dest.writeString(albumart);
+			dest.writeString(mediamimetype);
 		}
 		public static final Parcelable.Creator<Song> CREATOR = new Parcelable.Creator<Song>()  {
 			public Song createFromParcel(Parcel source) {
@@ -162,9 +180,11 @@ public class AudioPlayerActivity  extends Fragment
 	public class SongAdapter extends BaseAdapter {
 		private ArrayList<Song> songs;
 		private LayoutInflater songInf;
+		Context mcontext;
 		public SongAdapter(Context c, ArrayList<Song> theSongs){
 			songs=theSongs;
 			songInf=LayoutInflater.from(c);
+			mcontext=c;
 		}
 		@Override
 		public int getCount() {
@@ -180,6 +200,7 @@ public class AudioPlayerActivity  extends Fragment
 				// TODO Auto-generated method stub
 				 return 0;
 		}
+		@SuppressLint("ViewHolder")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 				//map to song layout
@@ -192,7 +213,24 @@ public class AudioPlayerActivity  extends Fragment
 				//get title and artist strings
 				songView.setText(currSong.getTitle());
 				artistView.setText(currSong.getArtist());
-				//imageView.getResources((R.drawable.ic_launcher));
+				//get media art
+				Uri sArtworkUri = Uri.parse("content://media/external/audio/albumart");
+                Uri albumArtUri = ContentUris.withAppendedId(sArtworkUri,currSong.getID());
+                bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(mcontext.getContentResolver(), albumArtUri);
+                    bitmap = Bitmap.createScaledBitmap(bitmap,200,250, true);
+                    currSong.albumart=albumArtUri.toString();
+                } catch (FileNotFoundException exception) {
+                    exception.printStackTrace();
+                    bitmap = BitmapFactory.decodeResource(mcontext.getResources(),R.drawable.audio);
+                    bitmap = Bitmap.createScaledBitmap(bitmap,200,250, true);
+                    currSong.albumart=null;
+                } catch (IOException e) {
+
+                    e.printStackTrace();
+                }
+                imageView.setImageBitmap(bitmap);
 				//set position as tag
 				songLay.setTag(position);
 				return songLay;
