@@ -117,8 +117,8 @@ Prerequisites
 
 Future Enhancements
 ===================
-1. Currently in video/audio playback, only play/pause is working. As future enhancement, the playback should be able to seek to a postion.
-2. Include audio,video looping and image slideshow
+1. Currently,the user is able to control play and pause on the media casted.User should be able to control the media stream to a seeked position.
+2. Include audio/video looping and image slideshow
 3. Extend CastOffline completely in accordance with the design checklist provided by google.
 
 
