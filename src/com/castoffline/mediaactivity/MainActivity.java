@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
-
+/*Reference: https://developer.android.com/training/implementing-navigation/nav-drawer.html*/
 
 package com.castoffline.mediaactivity;
  
@@ -62,16 +62,23 @@ public class MainActivity extends Activity {
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
         adapter = new NavigationlistAdapter(getApplicationContext(),navDrawerItems);
         mDrawerList.setAdapter(adapter);
+        // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,R.drawable.ic_drawer,R.string.app_name,R.string.app_name) {
+       // ActionBarDrawerToggle ties together the the proper interactions between the sliding drawer and the action bar app icon
+        mDrawerToggle = new ActionBarDrawerToggle(
+        		this,							/* host Activity */
+        		mDrawerLayout,					/* DrawerLayout object */
+        		R.drawable.ic_drawer,			/* nav drawer image to replace 'Up' caret */
+        		R.string.app_name,				/* "open drawer" description for accessibility which is app_name */
+        		R.string.app_name) {			/* "close drawer" description for accessibility which is app name */
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
-                invalidateOptionsMenu();
+                invalidateOptionsMenu();        // creates call to onPrepareOptionsMenu()
             }
             public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle(mDrawerTitle);
-                invalidateOptionsMenu();
+                invalidateOptionsMenu();	// creates call to onPrepareOptionsMenu()
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -92,6 +99,9 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);     
     }
+    
+    /* Called whenever we call invalidateOptionsMenu() */
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
@@ -125,15 +135,21 @@ public class MainActivity extends Activity {
         mTitle = title;
         getActionBar().setTitle(mTitle);
     }
+    
+    /**
+     * When using the ActionBarDrawerToggle, you must call it during
+     * onPostCreate() and onConfigurationChanged().
+     */
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
+        mDrawerToggle.syncState();  // Sync the toggle state after onRestoreInstanceState has occurred.
     }
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);  // Pass any configuration change to the drawer toggle
     }
  
 }
