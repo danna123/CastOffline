@@ -4,32 +4,32 @@
     <string name="action_settings">Settings</string>
     <string name="open">Slider Menu Opened</string>
     <string name="close">Slider Menu Closed</string>
-    <string name="app_id">41BFD7D8</string>
+    <string name="app_id">A311EF48</string>
+    
+    <!-- Namespace for sending media -->  
     <string name="namespace">urn:x-cast:com.google.cast.media</string>
-    <string name="message_to_cast">Message to Cast&#8230;</string>
-    <string name="media_route_menu_title">Play on&#8230;</string>
+    
+    <!-- Namespace for sending local phone player status -->
+    <string name="namespacehello">urn:x-cast:com.google.cast.sample.helloworld</string>
+    
+    <string name="message_to_cast">Message to Cast</string>
+    <string name="media_route_menu_title">Play on</string>
     <string name="instructions">Casting the media</string>
      
     <!-- Nav Drawer Menu Items -->
-    <string-array name="nav_drawer_items">
-        
-        
+    <string-array name="nav_drawer_items"> 
         <item >Videos</item>
         <item >Photos</item>
         <item >Audios</item>
     </string-array>
      
-    <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
+    <!-- Nav Drawer List Item Icons in the same order -->
+
     <array name="nav_drawer_icons">
-        
         <item>@drawable/ic_action_video</item>
         <item>@drawable/ic_action_picture</item>   
-        <item>@drawable/ic_launcher</item>
-       
+        <item>@drawable/audio</item>     
     </array>
-     
-    <!-- Content Description -->
   
 </resources>
 
