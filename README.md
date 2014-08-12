@@ -45,16 +45,98 @@ PROJECT NAME:
 
 CastOffline
 
-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+
+CONTACT INFORMATION:
+====================
+
+Divya Anna Marcus
+dmarcus@pdx.edu
+
+-----------------------------------------------------------------------------------------------------------------------
 
 PROJECT DESCRIPTION:
 ===================
 
-CastOffline uses GoogleCast, a technology that lets user to send and control media to a large display. CastOffline uses android phone as a sender device. It is used to send the local phone media like audios,videos and images in the phone to a display like television. The app maintains an audio,video and image list from the phone memory. The user can choose the media that he wishes to see on the big screen.To serve the local content,the device must include a http server. CastOffline uses NanoHttpd server.  Link:https://github.com/NanoHttpd/nanohttpd/tree/nanohttpd-for-java1.1
+CastOffline uses GoogleCast, a technology that lets user to send and control media to a large display. CastOffline is an android app that serves as a sender device. It is used to send the local phone media like audios,videos and images in the phone memory to any display like television. The app maintains an audio,video and image list collected from the phone memory. The user can choose the media that he wishes to see on the big screen.To serve the local content,the device must include a http server. CastOffline uses NanoHttpd server for this purpose.
+
+Link:https://github.com/NanoHttpd/nanohttpd/tree/nanohttpd-for-java1.1
 
 Sender: Android App
 
-Reciever: Custom Reciever developed using HTML5,CSS and Javascript
+Receiver: Custom Receiver developed using HTML5,CSS and Javascript
 
 -----------------------------------------------------------------------------------------------------------------------
+
+License Information
+====================
+
+Please follow the below link for the license information.
+
+https://github.com/danna123/CastOffline/blob/master/LICENSE
+
+------------------------------------------------------------------------------------------------------------------------
+
+Source Code
+===========
+
+https://github.com/danna123/CastOffline
+
+------------------------------------------------------------------------------------------------------------------------
+
+Developer Documents
+===================
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+User Manual
+===========
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+Build Instruction:
+==================
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Prerequisites
+==============
+
+1. Google Chromecast
+2. Internet connection
+3. Android Phone
+
+----------------------------------------------------------------------------------------------------------------------
+
+Future Enhancements
+===================
+1. Currently in video/audio playback, only play/pause is working. As future enhancement, the playback should be able to seek to a postion.
+2. Include audio,video looping and image slideshow
+3. Make the app completely in accordance with the  design checklist provided by google.
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Reference
+==========
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+Bug/Issue Tracker
+=================
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
 
