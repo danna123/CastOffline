@@ -1,0 +1,58 @@
+<!--
+
+Copyright 2014 Divya Anna Marcus
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+
+<!--Reference: This application is developed based on the google sample available in github
+Link: https://github.com/googlecast/Cast-Player-Sample -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CastOffline</title>
+    <link rel="stylesheet" href="page1.css" />
+  <script type="text/javascript" 
+		src="https://www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js">
+  </script>
+  <script type="text/javascript" src="page1.js"></script>
+</head>
+<body style="margin: 0">
+	<div id="player" class="player">
+		<div class="media">
+		    <img></img>
+			<video></video>
+            <audio></audio>
+		</div>
+		<div class="custom">
+			<div class="media-artwork"></div>
+			<div class="controls">
+				<span class="controls-play-pause"></span>
+				<span class="controls-cur-time"></span>
+				<span class="controls-total-time"></span>
+				<div class="controls-progress">
+					<div class="controls-progress-inner"></div>
+					<div class="controls-progress-thumb"></div>
+				</div>
+			</div>
+			<div class="media-info">
+				<div class="media-title"></div>
+                <div class="media-artist"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
