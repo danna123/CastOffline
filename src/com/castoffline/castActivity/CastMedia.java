@@ -12,6 +12,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
 
+/*
+* Reference: Android sender for Chromecast: https://developers.google.com/cast/docs/android_sender
+*            Webserver NanoHTTPD: https://github.com/NanoHttpd/nanohttpd/tree/nanohttpd-for-java1.1
+*            Media Playback Messages: https://developers.google.com/cast/docs/reference/messages
+*
+*/
 package com.castoffline.castActivity;
 
 import java.io.FileInputStream;
@@ -542,7 +548,9 @@ public class CastMedia extends ActionBarActivity implements MediaPlayerControl{
         });
 		}
 	}
-	
+	/*
+	* Currently seek function is not working
+	*/
 	public void seek(final int position) 
 	{
 		Log.d("seek","seek");
