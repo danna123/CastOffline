@@ -75,7 +75,7 @@ window.onload = function() {
  * <ol>
  * <li>Bind a listener to visibilitychange</li>
  * <li>Set the default state</li>
- * <li>Bind event listeners for img & video tags<br />
+ * <li>Bind event listeners for img ,audio &video tags<br />
  *  error, playing, pause, ended, timeupdate, seeking, &
  *  seeked</li>
  * <li>Find and remember the various elements</li>
@@ -117,6 +117,8 @@ sampleplayer.CastOffline = function(element) {
   this.playerelement.addEventListener('pause', this.onPause_.bind(this), false);
   this.playerelement.addEventListener('ended', this.onEnded_.bind(this), false);
   this.playerelement.addEventListener('timeupdate', this.onProgress_.bind(this),false);
+  
+  /* Currently seek function is not working in this project */
   this.playerelement.addEventListener('seeking', this.onSeekStart_.bind(this),false);
   this.playerelement.addEventListener('seeked', this.onSeekEnd_.bind(this),false);
   this.progressBarInnerElement_ = this.player_element.querySelector('.controls-progress-inner');
@@ -357,13 +359,13 @@ sampleplayer.CastOffline.prototype.onLoad_ = function(event) {
     case sampleplayer.Type.VIDEO:
       self.playerimage.onload = null;
       self.playerimage.removeAttribute('src');
-      self.playerelement.autoplay = autoplay || false;
+      self.playerelement.autoplay = autoplay || false; // autoplay is set to false
       self.playerelement.src = contentId || '';
       break;
      case sampleplayer.Type.AUDIO:
       self.playerimage.onload = null;
       self.playerimage.removeAttribute('src');
-      self.playerelement.autoplay = autoplay || false;
+      self.playerelement.autoplay = autoplay || false; // audio autoplay is set to false
       self.playerelement.src = contentId || '';
       break;
   }
