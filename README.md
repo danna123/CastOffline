@@ -110,7 +110,7 @@ Prerequisites
 ==============
 
 1. Google Chromecast
-2. Internet connection
+2. Internet connection for Chromecast initialization
 3. Android Phone
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ Future Enhancements
 Reference
 ==========
 
-
+Please follow the link for references: 
 
 
 ----------------------------------------------------------------------------------------------------------------------
@@ -135,6 +135,7 @@ Reference
 Bug/Issue Tracker
 =================
 
+Please log in issues/bugs in https://github.com/danna123/CastOffline/issues
 
 ---------------------------------------------------------------------------------------------------------------------
 
