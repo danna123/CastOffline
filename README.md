@@ -1,7 +1,7 @@
 CastOffline
 ===========
 
-An Android App to stream local phone media (photos,videos and audios) to a Chromecast.
+A cast app to stream local phone media (photos,videos and audios) to a Chromecast.
 
 Copyright 2014 Divya Anna Marcus
 
@@ -60,8 +60,6 @@ PROJECT DESCRIPTION:
 
 CastOffline uses GoogleCast, a technology that lets user to send and control media to a large display. CastOffline is an android app that serves as a sender device. It is used to send the local phone media like audios,videos and images in the phone memory to any display like television. The app maintains an audio,video and image list collected from the phone memory. The user can choose the media that he wishes to see on the big screen.To serve the local content,the device must include a http server. 
 
-Link:https://github.com/NanoHttpd/nanohttpd/tree/nanohttpd-for-java1.1
-
 Sender: Android App
 
 Receiver: Custom Receiver developed using HTML5,CSS and Javascript
@@ -87,14 +85,14 @@ https://github.com/danna123/CastOffline
 Developer Documents
 ===================
 
-
+Link: https://github.com/danna123/CastOffline/blob/master/Documents/Installationguidefordevelopers.pdf
 
 ------------------------------------------------------------------------------------------------------------------------
 
 User Manual
 ===========
 
-
+Apk Installation : https://github.com/danna123/CastOffline/blob/master/Documents/Usersdocument-ApkInstallation.pdf
 
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -102,7 +100,7 @@ User Manual
 Build Instruction:
 ==================
 
-
+Link : https://github.com/danna123/CastOffline/blob/master/Documents/Installationguidefordevelopers.pdf
 
 -----------------------------------------------------------------------------------------------------------------------
 
@@ -129,7 +127,7 @@ Reference
 
 Please follow the link for references: 
 
-
+https://github.com/danna123/CastOffline/blob/master/Documents/Reference.pdf
 ----------------------------------------------------------------------------------------------------------------------
 
 Bug/Issue Tracker
