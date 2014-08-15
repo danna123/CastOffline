@@ -79,15 +79,19 @@ Developer Documents
 ===================
 
 Link: https://github.com/danna123/CastOffline/blob/master/Documents/Installationguidefordevelopers.pdf
-Github for windows: https://github.com/danna123/CastOffline/blob/master/Documents/Guideonhowtousegithub.pdf
+Github for windows: 
+https://github.com/danna123/CastOffline/blob/master/Documents/Guideonhowtousegithub.pdf
+
 
 ------------------------------------------------------------------------------------------------------------------------
 
 User Manual
 ===========
 
-Apk Installation : https://github.com/danna123/CastOffline/blob/master/Documents/Usersdocument-ApkInstallation.pdf
-User Manual:       https://github.com/danna123/CastOffline/blob/master/Documents/UserManual.pdf
+Apk Installation : 
+https://github.com/danna123/CastOffline/blob/master/Documents/Usersdocument-ApkInstallation.pdf
+User Manual:       
+https://github.com/danna123/CastOffline/blob/master/Documents/UserManual.pdf
 
 
 ------------------------------------------------------------------------------------------------------------------------
