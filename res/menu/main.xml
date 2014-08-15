@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
 
 Copyright 2014 Divya Anna Marcus
@@ -16,7 +18,9 @@ limitations under the License.
 
 -->
 
-<?xml version="1.0" encoding="utf-8"?>
+<!--Sender application must support cast button. This can be done
+using the MediaRouter ActionBar provider: android.support.v7.app.MediaRouteActionProvider -->
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
