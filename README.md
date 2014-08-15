@@ -58,7 +58,7 @@ dmarcus@pdx.edu
 PROJECT DESCRIPTION:
 ===================
 
-CastOffline uses GoogleCast, a technology that lets user to send and control media to a large display. CastOffline is an android app that serves as a sender device. It is used to send the local phone media like audios,videos and images in the phone memory to any display like television. The app maintains an audio,video and image list collected from the phone memory. The user can choose the media that he wishes to see on the big screen.To serve the local content,the device must include a http server. 
+CastOffline uses GoogleCast, a technology that lets user to send and control media to a large display. CastOffline is a cast app that has an android sender and a custom receiver. It is used to send the local phone media like audios,videos and images in the phone memory to any display like television. The app maintains an audio,video and image list collected from the phone memory. The user can choose the media that he wishes to see on the big screen.
 
 Sender: Android App
 
@@ -116,7 +116,7 @@ Prerequisites
 Future Enhancements
 ===================
 1. Currently,the user is able to control play and pause on the media casted.User should be able to control the media stream to a seeked position.
-2. Include audio/video looping and image slideshow
+2. Include audio/video looping and image slideshow.
 3. Extend CastOffline completely in accordance with the design checklist provided by google.
 
 
