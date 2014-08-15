@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <!--
 
 Copyright 2014 Divya Anna Marcus
@@ -16,30 +18,31 @@ limitations under the License.
 
 -->
 
-<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <string name="app_name">CastOffline</string>
     <string name="action_settings">Settings</string>
     <string name="open">Slider Menu Opened</string>
     <string name="close">Slider Menu Closed</string>
+    
+    <!-- Enter the app id . 
+    Refer : https://github.com/danna123/CastOffline/blob/master/Documents/Installationguidefordevelopers.pdf-->
     <string name="app_id">ENTER YOUR APP ID OR DEFAULT APP ID</string>
     
     <!-- Namespace for sending media -->  
     <string name="namespace">urn:x-cast:com.google.cast.media</string>
-    
-    
     <string name="message_to_cast">Message to Cast</string>
     <string name="media_route_menu_title">Play on</string>
     <string name="instructions">Casting the media</string>
      
-    <!-- Nav Drawer Menu Items -->
+    <!-- Nav Drawer Menu Items Video/Photos/Audios -->
     <string-array name="nav_drawer_items"> 
         <item >Videos</item>
         <item >Photos</item>
         <item >Audios</item>
     </string-array>
      
-    <!-- Nav Drawer List Item Icons in the same order -->
+    <!-- Nav Drawer List Item Icons entered in the same order -->
 
     <array name="nav_drawer_icons">
         <item>@drawable/ic_action_video</item>
