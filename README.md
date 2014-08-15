@@ -21,13 +21,6 @@ Link for repository: https://github.com/danna123/CastOffline
 
 License terms are specified in the License file. Link : https://github.com/danna123/CastOffline/blob/master/LICENSE
 
-References:
-
-1. https://developers.google.com/cast/docs/android_sender
-2. https://developers.google.com/cast/docs/custom_receiver
-3. https://github.com/googlecast
-4. http://stackoverflow.com/questions/tagged/Google-Cast
-
 Author:Divya Anna Marcus
 email:dmarcus@pdx.edu
 
