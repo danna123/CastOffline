@@ -42,10 +42,12 @@ limitations under the License.
     android:textColor="@color/green"
     android:textSize="18sp" />
 
+  <!-- Custom VideoView used to retrieve the mediacontroller states -->
   
-  <VideoView
-      android:id="@+id/videoView1"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"/>
+
+    <com.castoffline.castActivity.CustomVideoView
+        android:id="@+id/videoView1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
