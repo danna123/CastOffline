@@ -1,3 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.castoffline"
+    android:versionCode="1"
+    android:versionName="1.0" >
 <!--
 
 Copyright 2014 Divya Anna Marcus
@@ -16,10 +20,7 @@ limitations under the License.
 
 -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.castoffline"
-    android:versionCode="1"
-    android:versionName="1.0" >
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
@@ -33,6 +34,7 @@ limitations under the License.
         android:theme="@style/Theme.AppCompat" >
          <meta-data android:name="com.google.android.gms.version" 
 		android:value="@integer/google_play_services_version" />
+		<!--Main Activity -->
         <activity
             android:name=".mediaactivity.MainActivity"
             android:label="@string/app_name"
@@ -42,21 +44,25 @@ limitations under the License.
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--Video Player Activity -->
         <activity
             android:name=".mediaactivity.VideoPlayerActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
+        <!--Image Grid Activity -->
         <activity
             android:name=".mediaactivity.ImageGrid"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
-            </activity>
+        </activity>
+        <!--Audio Activity -->   
         <activity
             android:name=".mediaactivity.AudioPlayerActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
+        <!-- Up button in navigation Layout -->
         <activity
             android:name=".castActivity.CastMedia"
             android:label="@string/app_name"
